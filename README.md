@@ -1,21 +1,21 @@
 # Pre API
 
-## File Based Databse
+## File Based Databse REST API
 
-A very simple API prototype file based database developed using Nodejs, ExpressJS, its easy to use to any type of project
+A very simple prototype file based database REST API developed using <code>Nodejs</code>, `ExpressJS`, its easy to use to any type of project
 
 ### Usecases
 
 - Dont wait for BE you can use till BE is ready
 - Learn CRUD operations without having API dependencies
-- No need to database
-- Prototype apps
+- No real database required
+- Build Prototype based apps and more
 
-# Docs
+## Docs
 
-## How to use?
+### How to use?
 
-1. Download or fork it
+1. [Download](https://github.com/hidaytrahman/preapi/archive/refs/heads/main.zip) or [fork it](https://github.com/hidaytrahman/preapi/fork)
 2. run `npm install`
 3. `npm start`
 
@@ -25,9 +25,12 @@ It can be accessible here : `http://localhost:3030/todos`
 
 _\* Feel free to change port_
 
-Feel free to use `VSCode REST Client` extension docs are already available in `docs/API.rest` folder
+Feel free to use `VSCode REST Client` extension docs are already available in `docs/API.rest` file
 
-## Get Todos (anything)
+---
+
+
+### Get Todos (anything)
 
 ```
 GET: http://localhost:3030/todos
@@ -47,7 +50,7 @@ GET: http://localhost:3030/todos
 }
 ```
 
-## Create
+### Create
 
 ```javascript
 POST http://localhost:3030/todo
@@ -66,7 +69,7 @@ Response
   "todos": [
     {
       "id": "eBPNbH6TOc40qu6DWcRv",
-      "todo": "Visit office space",
+      "todo": "New todo item",
       "isCompleted": true,
       "created_at": "2022-12-07T19:10:39.106Z"
     }
@@ -75,7 +78,7 @@ Response
 }
 ```
 
-## Delete
+### Delete
 
 ```javascript
 DELETE http://localhost:3030/todo/{id}
@@ -98,7 +101,7 @@ Response (Not exist)
 }
 ```
 
-# File Database
+## File Database
 
 All database files should be under `src/data/` folder
 

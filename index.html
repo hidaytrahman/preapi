@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>PreAPI</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <style>
+      @font-face {
+        font-family: "AdiHaus";
+        src: url("https://assets.codepen.io/6060109/adihaus_regular.ttf")
+          format("truetype");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: "AdiHaus";
+        src: url("https://assets.codepen.io/6060109/adihaus_bold.ttf")
+          format("truetype");
+        font-weight: bold;
+        font-style: normal;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        border-style: none;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+      }
+
+      :root {
+        --theme-color-black: #333333; /* rgba(51, 51, 51, 1) */
+        --theme-color-brown: #423a3a;
+        --theme-color-red: #cd3a24;
+        --theme-color-white: #feffff; /* rgba(254, 255, 255, 1) */
+      }
+
+      /* ---------- MAIN BODY DECLERATIONS ---------- */
+
+      html,
+      body {
+        background-color: var(--theme-color-white);
+        font-family: "AdiHaus";
+        font-size: 14px;
+        height: 100%;
+        width: 100%;
+      }
+
+      input {
+        font-family: "AdiHaus";
+      }
+
+      code {
+        background: black;
+        color: #fff;
+        
+        border-radius: 5px;
+        box-shadow: 7px 4px 12px 1px #000000;
+        padding: 10px !important;
+      }
+
+      .light {
+        background: rgb(70, 69, 69);
+        color: var(--theme-color-red);
+       
+      }
+
+      code pre {
+        color: #fff;
+      }
+
+      .mobile-container {
+        margin: 0 auto;
+        max-width: 500px;
+        min-width: 300px;
+      }
+
+      .hero-image-desktop {
+        display: none;
+      }
+
+      /* ---------- HERO BANNER DECLERATIONS ---------- */
+      .hero-banner {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .hero-banner .logo-wrapper {
+        height: auto;
+        margin: 0 auto;
+        padding: 1rem 0;
+        width: auto;
+      }
+
+      .logo-wrapper img {
+        display: block;
+        height: 2.5rem;
+        margin: 0 auto;
+        width: auto;
+      }
+
+      .hero-banner .hero-image {
+        background-image: url(https://assets.codepen.io/6060109/athlete-girl.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 376px;
+        width: 100%;
+      }
+
+      /* ---------- TEXT INFO DECLERATIONS ---------- */
+      .text-info {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+      }
+
+      .text-info > * {
+        padding: 0 2.5rem 1rem;
+      }
+
+      /* intended for the first h2 within .text-info */
+      .text-info h2:nth-child(1) {
+        color: var(--theme-color-red);
+        font-weight: normal;
+        padding-top: 1.8rem;
+        padding-bottom: 1rem;
+      }
+
+      .text-info h2 {
+        font-size: 3.5rem;
+        font-weight: bold;
+        color: var(--theme-color-brown);
+        letter-spacing: 5px;
+        text-transform: uppercase;
+      }
+
+      .text-info p {
+        color: var(--theme-color-black);
+        line-height: 24px;
+      }
+
+      .text-info .email-signup {
+        margin: 1rem 0 6rem;
+        position: relative;
+        width: 100%;
+      }
+
+      @media only screen and (min-width: 768px) {
+        body {
+          background-image: url(https://assets.codepen.io/6060109/destop-bg.png);
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          display: flex;
+          flex-direction: row;
+          height: 100%;
+        }
+
+        main {
+          display: flex;
+          flex-direction: column;
+          height: inherit;
+          max-width: 100%;
+          margin: 0 auto;
+          padding-left: 3.5rem;
+        }
+
+        .mobile-container {
+          width: 45vw;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+        }
+
+        .hero-banner .logo-wrapper {
+          margin-left: 3.5rem;
+          width: 100%;
+          display: flex;
+          align-items: start;
+          flex-direction: column;
+        }
+        .logo-wrapper img {
+          margin: 0 0 0;
+          padding-left: 2.5rem;
+        }
+
+        .hero-image {
+          display: none;
+        }
+
+        .text-info {
+          text-align: left;
+          align-items: start;
+        }
+
+        .text-info h2 {
+          font-size: 4.5rem;
+        }
+
+        .text-info p {
+          font-size: 16px;
+        }
+
+        .text-info input {
+          font-size: 16px;
+        }
+
+        .text-info .email-signup {
+          margin: 1rem 0 7rem;
+        }
+
+        .hero-image-desktop {
+          display: block;
+          height: 100%;
+          width: 55vw;
+        }
+
+        .hero-image-desktop img {
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 100%);
+          height: 100%;
+          object-fit: cover;
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mobile-container">
+      <header>
+        View on <a href="https://www.github.com/hidaytrahman/preapi">Github</a>
+      </header>
+      <main>
+        <article class="text-info">
+          <h2>PRE API</h2>
+          <h2>File Based DB</h2>
+          <p>
+            A very simple API prototype file based database developed using Nodejs, ExpressJS, its easy to use to any type of project
+          </p>
+
+          <code class="light">GET http://localhost:3030/todos</code> <br />
+          <code>
+            <pre>
+  {
+    "todos": [
+      {
+        "id": "eBPNbH6TOc40qu6DWcRv",
+        "todo": "Buy a car",
+        "isCompleted": true,
+        "created_at": "2022-12-07T19:10:39.106Z"
+      }
+    ],
+    "message": "Todo fetched successfully!"
+    }
+    </pre
+            >
+          </code>
+        </article>
+      </main>
+    </div>
+    <div class="hero-image-desktop">
+      <img
+        src="https://images.unsplash.com/photo-1594904351111-a072f80b1a71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80"
+        alt="Femail athlete squinting towards the camera."
+      />
+    </div>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+@BASEURL = http://localhost:3030
+@contentType = application/json
+
+
+### GET Welcome
+GET {{BASEURL}}
+
+### GET Todos
+GET {{BASEURL}}/todos
+
+### Create Todo
+POST {{BASEURL}}/todo
+Content-Type: {{contentType}}
+
+{
+    "todo": "New todo item",
+    "isCompleted": true
+}
+
+
+### DELETE Todo
+DELETE {{BASEURL}}/todo/3JfSMdF4nwZaj9MU071t
+Content-Type: {{contentType}}

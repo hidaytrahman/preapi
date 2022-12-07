@@ -1,0 +1,18 @@
+{
+  "name": "pre-api",
+  "version": "1.0.0",
+  "description": "A very simple API prototype file based database developed using Nodejs, ExpressJS, its easy to use to any type of project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "Hidayt Rahman",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "lodash": "^4.17.21",
+    "nanoid": "^3.1.23"
+  }
+}

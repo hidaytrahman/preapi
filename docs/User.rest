@@ -2,9 +2,6 @@
 @contentType = application/json
 
 
-### GET Welcome
-GET {{BASEURL}}
-
 ### GET Users
 GET {{BASEURL}}/users
 
@@ -13,11 +10,13 @@ POST {{BASEURL}}/user
 Content-Type: {{contentType}}
 
 {
-    "name": "Hidayt Rahman",
-    "username": "hidaytrahman"
+    "name": "Hidayt Raj",
+    "username": "hidaytraj1",
+    "gender": "male",
+    "role": "admin"
 }
 
 
 ### DELETE User
-DELETE {{BASEURL}}/user/eBPNbH6TOc40qu6DWcRv
+DELETE {{BASEURL}}/user/gB3YBrBKhMwYHW5horXu
 Content-Type: {{contentType}}

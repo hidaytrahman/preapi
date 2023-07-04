@@ -10,7 +10,7 @@ module.exports = (app) => {
 	// using nanoid for the random id generation because we dont have the database
 	const _randomId = nanoid(20);
 
-	// get todos or your own api endpoint
+	// get users or your own api endpoint
 	app.get('/users', (req, res) => {
 		try {
 			const data = getData('user');
@@ -25,29 +25,26 @@ module.exports = (app) => {
 		}
 	});
 
-	// delete a todo
+	// delete a user
 	app.delete('/user/:id', (req, res) => {
 		try {
 			const _id = req.params.id; // get id from parameters
 
-			// access file
-			const objectData = fs.readFileSync(dbFilePath, 'utf8');
-
-			// convert to the object
-			const myObj = JSON.parse(objectData);
+			// get data from file
+			const _fileData = getData('user');
 
 			// check if the item exists in the array by id
-			const selectedData = myObj.todos.find((item) => item.id === _id);
+			const selectedData = _fileData.users.find((item) => item.id === _id);
 
 			// if exists delete
 			if (selectedData) {
 				// exclude the selected item
-				const afterRemovedTodos = myObj.todos.filter((item, index) => item.id !== _id);
-				// set to the todos array with deleted item
-				myObj.todos = afterRemovedTodos;
+				const filteredData = _fileData.users.filter((item, index) => item.id !== _id);
+				// set to the users array with deleted item
+				_fileData.users = filteredData;
 
 				// and update the file again
-				fs.writeFile(dbFilePath, JSON.stringify(myObj, null, 4), (err, data) => {
+				fs.writeFile(dbFilePath, JSON.stringify(_fileData, null, 4), (err, data) => {
 					if (err) throw err;
 
 					res.json({
@@ -62,11 +59,12 @@ module.exports = (app) => {
 		} catch (e) {
 			res.json({
 				message: 'Something went wrong',
+				info: e.message,
 			});
 		}
 	});
 
-	// create a todo
+	// create a user
 	app.post('/user', (req, res) => {
 		try {
 			if (!req.body.username) {

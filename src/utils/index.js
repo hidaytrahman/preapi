@@ -1,9 +1,15 @@
 const fs = require('fs');
 
-// we are using data.json as a datbase
-const dbFilePath = './src/data/data.json';
+function getData(type) {
+	// we are using data.json as a datbase by default
+	let dbFilePath = './src/data/data.json';
 
-function getData() {
+	if (type === 'user') {
+		// select user specific data
+		dbFilePath = './src/data/users.json';
+	} else {
+		dbFilePath = './src/data/data.json';
+	}
 	// access file
 	const objectData = fs.readFileSync(dbFilePath, 'utf8');
 

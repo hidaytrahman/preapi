@@ -1,0 +1,51 @@
+{
+    "users": [
+        {
+            "id": "u9Iz28xbMJBoFydmceqL",
+            "name": "Hidayt Rahman",
+            "isActive": false,
+            "created_at": "2023-07-04T17:39:50.363Z"
+        },
+        {
+            "id": "ioINaTEWUHlL_04DG37m",
+            "name": "Hidayt Rahman",
+            "isActive": false,
+            "created_at": "2023-07-04T17:41:12.136Z"
+        },
+        {
+            "id": "gB3YBrBKhMwYHW5horXu",
+            "name": "Hidayt Rahman",
+            "username": "hidaytrahman",
+            "isActive": false,
+            "created_at": "2023-07-04T17:42:32.590Z"
+        },
+        {
+            "id": "WjWzoI8KeBTvKOECzOrq",
+            "name": "Hidayt Rahman",
+            "username": "hidaytrahman",
+            "isActive": false,
+            "created_at": "2023-07-04T17:42:34.515Z"
+        },
+        {
+            "id": "jppS6GNjsfd5F-9NSdAQ",
+            "name": "Hidayt Rahman",
+            "username": "hidaytrahman",
+            "isActive": false,
+            "created_at": "2023-07-04T17:42:36.691Z"
+        },
+        {
+            "id": "bBsp1VrB7ADz64npRDLY",
+            "name": "Hidayt Rahman",
+            "username": "hidaytrahman",
+            "isActive": false,
+            "created_at": "2023-07-04T17:43:07.107Z"
+        },
+        {
+            "id": "mjoxqTYY9uaI9ODhWv_G",
+            "name": "Hidayt Rahman",
+            "username": "hidaytrahman",
+            "isActive": false,
+            "created_at": "2023-07-04T17:43:08.394Z"
+        }
+    ]
+}

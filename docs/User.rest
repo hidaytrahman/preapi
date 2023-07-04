@@ -1,0 +1,23 @@
+@BASEURL = http://localhost:3030
+@contentType = application/json
+
+
+### GET Welcome
+GET {{BASEURL}}
+
+### GET Users
+GET {{BASEURL}}/users
+
+### Create User
+POST {{BASEURL}}/user
+Content-Type: {{contentType}}
+
+{
+    "name": "Hidayt Rahman",
+    "username": "hidaytrahman"
+}
+
+
+### DELETE User
+DELETE {{BASEURL}}/user/eBPNbH6TOc40qu6DWcRv
+Content-Type: {{contentType}}

@@ -28,21 +28,21 @@ module.exports = (app) => {
 		try {
 			const _id = req.params.id; // get id from parameters
 
-			// convert to the object
-			const data = getData();
+			// get data from file
+			const _fileData = getData();
 
 			// check if the item exists in the array by id
-			const selectedData = data.todos.find((item) => item.id === _id);
+			const selectedData = _fileData.todos.find((item) => item.id === _id);
 
 			// if exists delete
 			if (selectedData) {
 				// exclude the selected item
-				const afterRemovedTodos = data.todos.filter((item, index) => item.id !== _id);
+				const afterRemovedTodos = _fileData.todos.filter((item, index) => item.id !== _id);
 				// set to the todos array with deleted item
-				data.todos = afterRemovedTodos;
+				_fileData.todos = afterRemovedTodos;
 
 				// and update the file again
-				fs.writeFile(dbFilePath, JSON.stringify(data, null, 4), (err, data) => {
+				fs.writeFile(dbFilePath, JSON.stringify(_fileData, null, 4), (err, data) => {
 					if (err) throw err;
 
 					res.json({
@@ -79,52 +79,64 @@ module.exports = (app) => {
 
 			let objectData = { todos: _newDoc };
 
-			fs.readFile(dbFilePath, 'utf8', function readFileCallback(err, data) {
-				if (err) {
-					console.log(err);
-				} else {
-					// if file has data
-					if (data) {
-						objectData = JSON.parse(data); //now it an object
+			// get data from file
+			const _fileData = getData();
 
-						objectData.todos.push(_newDoc); // add some data
+			// check if the item exists in the array by id
+			const selectedData = _fileData.todos.find((item) => item.todo === req.body.todo);
 
-						const json = JSON.stringify(objectData, null, 4); // convert it back to json
-
-						fs.writeFile(dbFilePath, json, 'utf8', (err, data) => {
-							if (err) {
-								console.log(err);
-								return;
-							} else {
-								console.log('data added');
-								res.json({
-									data: _newDoc,
-									message: 'Data has been added successfully!!!',
-								});
-							}
-						});
+			if (selectedData) {
+				res.json({
+					message: `${req.body.todo} is already exists`,
+				});
+			} else {
+				fs.readFile(dbFilePath, 'utf8', function readFileCallback(err, data) {
+					if (err) {
+						console.log(err);
 					} else {
-						const json = JSON.stringify(objectData, null, 4);
+						// if file has data
+						if (data) {
+							objectData = JSON.parse(data); //now it an object
 
-						fs.writeFile(dbFilePath, json, 'utf8', (err, data) => {
-							if (err) {
-								console.log(err);
-								return;
-							} else {
-								console.log('data added');
-								return res.json({
-									data: _newDoc,
-									message: 'Data has been added successfully!!!',
-								});
-							}
-						});
+							objectData.todos.push(_newDoc); // add some data
 
-						res.json({
-							message: 'No data',
-						});
+							const json = JSON.stringify(objectData, null, 4); // convert it back to json
+
+							fs.writeFile(dbFilePath, json, 'utf8', (err, data) => {
+								if (err) {
+									console.log(err);
+									return;
+								} else {
+									console.log('data added');
+									res.json({
+										data: _newDoc,
+										message: 'Data has been added successfully!!!',
+									});
+								}
+							});
+						} else {
+							const json = JSON.stringify(objectData, null, 4);
+
+							fs.writeFile(dbFilePath, json, 'utf8', (err, data) => {
+								if (err) {
+									console.log(err);
+									return;
+								} else {
+									console.log('data added');
+									return res.json({
+										data: _newDoc,
+										message: 'Data has been added successfully!!!',
+									});
+								}
+							});
+
+							res.json({
+								message: 'No data',
+							});
+						}
 					}
-				}
-			});
+				});
+			}
 		} catch (e) {
 			res.json({
 				message: 'Something went wrong',

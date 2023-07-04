@@ -1,12 +1,6 @@
 {
     "todos": [
         {
-            "id": "eBPNbH6TOc40qu6DWcRv",
-            "todo": "Visit office space",
-            "isCompleted": true,
-            "created_at": "2022-12-07T19:10:39.106Z"
-        },
-        {
             "id": "kK51MqB1sPFZpWvQ2PNe",
             "todo": "New todo item",
             "isCompleted": true,

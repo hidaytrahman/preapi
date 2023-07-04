@@ -1,5 +1,6 @@
 const fs = require('fs');
 const { nanoid } = require('nanoid');
+const { getData } = require('../utils');
 
 module.exports = (app) => {
 	// we are using data.json as a datbase
@@ -27,24 +28,21 @@ module.exports = (app) => {
 		try {
 			const _id = req.params.id; // get id from parameters
 
-			// access file
-			const objectData = fs.readFileSync(dbFilePath, 'utf8');
-
 			// convert to the object
-			const myObj = JSON.parse(objectData);
+			const data = getData();
 
 			// check if the item exists in the array by id
-			const selectedData = myObj.todos.find((item) => item.id === _id);
+			const selectedData = data.todos.find((item) => item.id === _id);
 
 			// if exists delete
 			if (selectedData) {
 				// exclude the selected item
-				const afterRemovedTodos = myObj.todos.filter((item, index) => item.id !== _id);
+				const afterRemovedTodos = data.todos.filter((item, index) => item.id !== _id);
 				// set to the todos array with deleted item
-				myObj.todos = afterRemovedTodos;
+				data.todos = afterRemovedTodos;
 
 				// and update the file again
-				fs.writeFile(dbFilePath, JSON.stringify(myObj, null, 4), (err, data) => {
+				fs.writeFile(dbFilePath, JSON.stringify(data, null, 4), (err, data) => {
 					if (err) throw err;
 
 					res.json({

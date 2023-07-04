@@ -19,5 +19,5 @@ Content-Type: {{contentType}}
 
 
 ### DELETE Todo
-DELETE {{BASEURL}}/todo/3JfSMdF4nwZaj9MU071t
+DELETE {{BASEURL}}/todo/eBPNbH6TOc40qu6DWcRv
 Content-Type: {{contentType}}

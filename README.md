@@ -29,7 +29,6 @@ Feel free to use `VSCode REST Client` extension docs are already available in `d
 
 ---
 
-
 ### Get Todos (anything)
 
 ```

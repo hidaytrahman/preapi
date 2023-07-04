@@ -2,44 +2,46 @@ const fs = require('fs');
 const { nanoid } = require('nanoid');
 const { getData } = require('../utils');
 
+const entity = 'User';
+
 module.exports = (app) => {
 	// we are using data.json as a datbase
-	const dbFilePath = './src/data/data.json';
+	const dbFilePath = './src/data/users.json';
 	// using nanoid for the random id generation because we dont have the database
 	const _randomId = nanoid(20);
 
-	// get todos or your own api endpoint
-	app.get('/todos', (req, res) => {
+	// get users or your own api endpoint
+	app.get('/users', (req, res) => {
 		try {
-			const todoObj = fs.readFileSync(dbFilePath, 'utf-8');
-			const data = JSON.parse(todoObj);
-			data.message = 'Todo fetched successfully!';
+			const data = getData('user');
+			data.message = `${entity} fetched successfully!`;
 
 			res.json(data);
 		} catch (e) {
 			res.json({
 				message: 'There are no data to fetch',
+				info: e.message,
 			});
 		}
 	});
 
-	// delete a todo
-	app.delete('/todo/:id', (req, res) => {
+	// delete a user
+	app.delete('/user/:id', (req, res) => {
 		try {
 			const _id = req.params.id; // get id from parameters
 
 			// get data from file
-			const _fileData = getData();
+			const _fileData = getData('user');
 
 			// check if the item exists in the array by id
-			const selectedData = _fileData.todos.find((item) => item.id === _id);
+			const selectedData = _fileData.users.find((item) => item.id === _id);
 
 			// if exists delete
 			if (selectedData) {
 				// exclude the selected item
-				const afterRemovedTodos = _fileData.todos.filter((item, index) => item.id !== _id);
-				// set to the todos array with deleted item
-				_fileData.todos = afterRemovedTodos;
+				const filteredData = _fileData.users.filter((item, index) => item.id !== _id);
+				// set to the users array with deleted item
+				_fileData.users = filteredData;
 
 				// and update the file again
 				fs.writeFile(dbFilePath, JSON.stringify(_fileData, null, 4), (err, data) => {
@@ -57,37 +59,42 @@ module.exports = (app) => {
 		} catch (e) {
 			res.json({
 				message: 'Something went wrong',
+				info: e.message,
 			});
 		}
 	});
 
-	// create a todo
-	app.post('/todo', (req, res) => {
+	// create a user
+	app.post('/user', (req, res) => {
 		try {
-			if (!req.body.todo) {
+			if (!req.body.username) {
 				return res.json({
-					message: 'Todo is required',
+					message: 'username is required',
 				});
 			}
+
 			// prepare data based on the requriments
 			const _newDoc = {
 				id: _randomId,
-				todo: req.body.todo,
-				isCompleted: req.body.isCompleted || false,
+				name: req.body.name,
+				username: req.body.username,
+				gender: req.body.gender,
+				role: req.body.role,
+				isActive: false,
 				created_at: new Date(),
 			};
 
-			let objectData = { todos: _newDoc };
+			let objectData = { users: _newDoc };
 
 			// get data from file
-			const _fileData = getData();
+			const _fileData = getData('user');
 
 			// check if the item exists in the array by id
-			const selectedData = _fileData.todos.find((item) => item.todo === req.body.todo);
+			const selectedData = _fileData.users.find((item) => item.username === req.body.username);
 
 			if (selectedData) {
 				res.json({
-					message: `${req.body.todo} is already exists`,
+					message: `${req.body.username} is already exists`,
 				});
 			} else {
 				fs.readFile(dbFilePath, 'utf8', function readFileCallback(err, data) {
@@ -98,7 +105,7 @@ module.exports = (app) => {
 						if (data) {
 							objectData = JSON.parse(data); //now it an object
 
-							objectData.todos.push(_newDoc); // add some data
+							objectData.users.push(_newDoc); // add some data
 
 							const json = JSON.stringify(objectData, null, 4); // convert it back to json
 

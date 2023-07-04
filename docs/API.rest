@@ -13,11 +13,11 @@ POST {{BASEURL}}/todo
 Content-Type: {{contentType}}
 
 {
-    "todo": "New todo item",
+    "todo": "New todo item1",
     "isCompleted": true
 }
 
 
 ### DELETE Todo
-DELETE {{BASEURL}}/todo/3JfSMdF4nwZaj9MU071t
+DELETE {{BASEURL}}/todo/eBPNbH6TOc40qu6DWcRv
 Content-Type: {{contentType}}

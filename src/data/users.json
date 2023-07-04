@@ -1,0 +1,41 @@
+{
+    "users": [
+        {
+            "id": "jppS6GNjsfd5F-9NSdAQ",
+            "name": "Hidayt Rahman",
+            "username": "hidaytrahman",
+            "isActive": false,
+            "created_at": "2023-07-04T17:42:36.691Z"
+        },
+        {
+            "id": "bBsp1VrB7ADz64npRDLY",
+            "name": "Hidayt Rahman",
+            "username": "hidaytrahman",
+            "isActive": false,
+            "created_at": "2023-07-04T17:43:07.107Z"
+        },
+        {
+            "id": "mjoxqTYY9uaI9ODhWv_G",
+            "name": "Hidayt Rahman",
+            "username": "hidaytrahman",
+            "isActive": false,
+            "created_at": "2023-07-04T17:43:08.394Z"
+        },
+        {
+            "id": "0bksHKhv3BbaaBNS4vKj",
+            "name": "Hidayt Raj",
+            "username": "hidaytraj",
+            "isActive": false,
+            "created_at": "2023-07-04T17:50:03.486Z"
+        },
+        {
+            "id": "p8II-V0zadLKCIjzGbJr",
+            "name": "Hidayt Raj",
+            "username": "hidaytraj1",
+            "gender": "male",
+            "role": "admin",
+            "isActive": false,
+            "created_at": "2023-07-04T17:50:54.190Z"
+        }
+    ]
+}

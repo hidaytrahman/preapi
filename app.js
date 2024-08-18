@@ -22,11 +22,14 @@ app.get('/', function (req, res) {
 // Base Todo Router
 const _router = require('./src/router/Router');
 require('./src/router/UserRoutes')(app);
+require('./src/router/NavRoutes')(app);
 // Add more router here as per your application needs
 
 _router(app);
 
 // Running App
 app.listen(PORT, () => {
-	console.log('App is running on port ' + PORT);
+	console.log(`App is running: http://localhost:${PORT}`);
+	console.log(`API running: http://localhost:${PORT}/todos`);
+	console.log(`API running: http://localhost:${PORT}/users`);
 });
